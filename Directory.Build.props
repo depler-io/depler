@@ -1,0 +1,74 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!--General properties-->
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <DebugSymbols>True</DebugSymbols>
+        <DebugType>portable</DebugType>
+    </PropertyGroup>
+    
+    <!--Version properties-->
+    <PropertyGroup>
+        <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+        <BuildBranch Condition="'$(BuildBranch)' == ''">master</BuildBranch>
+
+        <VersionMajor Condition="'$(VersionMajor)' == ''">0</VersionMajor>
+        <VersionMinor Condition="'$(VersionMinor)' == ''">1</VersionMinor>
+        <VersionPatch Condition="'$(VersionPatch)' == ''">0</VersionPatch>
+        <!--suppress CheckTagEmptyBody -->
+        <VersionPrerelease Condition="'$(VersionPrerelease)' == ''"></VersionPrerelease>
+
+        <VersionSuffix Condition="'$(VersionSuffix)' == ''">$(BuildBranch).$(BuildNumber)</VersionSuffix>
+        <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+
+        <AssemblyVersion>$(VersionMajor).$(VersionMinor).$(VersionPatch).0</AssemblyVersion>
+
+        <FileVersion Condition="'$(Configuration)'=='Debug'">$(VersionMajor).$(VersionMinor).$(VersionPatch).$(BuildNumber)</FileVersion>
+        <FileVersion Condition="'$(Configuration)'=='Release'">$(VersionMajor).$(VersionMinor).$(VersionPatch)</FileVersion>
+
+        <InformationalVersion Condition="'$(Configuration)'=='Debug'">$(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionSuffix)</InformationalVersion>
+        <InformationalVersion Condition="'$(Configuration)'=='Release'">$(VersionMajor).$(VersionMinor).$(VersionPatch)</InformationalVersion>
+    </PropertyGroup>
+    
+    <!--Package properties-->
+    <PropertyGroup>
+        <Product>depler</Product>
+        <Copyright>Copyright (c) $([System.DateTime]::Now.Year) Todor Todorov</Copyright>
+        <Authors>Todor Todorov (a.k.a. totollygeek)</Authors>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://depler.io</PackageProjectUrl>
+        <Description>DEPendency crawLER for managing your NuGet packages</Description>
+        <!--<PackageIcon>icon.png</PackageIcon>-->
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        
+        <PackageVersion Condition="'$(VersionPrerelease)' == ''">$(VersionMajor).$(VersionMinor).$(VersionPatch)</PackageVersion>
+        <PackageVersion Condition="'$(VersionPrerelease)' != ''">$(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionPrerelease)</PackageVersion>
+    </PropertyGroup>
+
+    <!--Tests properties-->
+    <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('tests'))">
+        <IsPackable>False</IsPackable>
+    </PropertyGroup>
+
+    <!--Error and warning properties-->
+    <PropertyGroup>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <!--<DisableImplicitPackageTargetFallback>True</DisableImplicitPackageTargetFallback>-->
+        <!--Do not show warnings for not a valid semantic version-->
+        <NoWarn>$(NoWarn);CS7035</NoWarn>
+    </PropertyGroup>
+
+    <!--Tests refrences-->
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('tests'))">
+        <PackageReference Include="coverlet.msbuild" Version="3.1.0" />
+        <PackageReference Include="FluentAssertions" Version="6.6.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0"/>
+        <PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.36"/>
+        <PackageReference Include="xunit" Version="2.4.1"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3"/>
+    </ItemGroup>
+</Project>

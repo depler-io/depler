@@ -7,6 +7,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{3EC3F994-4F4E-4316-94EB-1CFC2AF6E8E3}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depler.console", "src\depler.console\depler.console.csproj", "{24741B2C-079F-4163-9C51-9EB7586BFE46}"
