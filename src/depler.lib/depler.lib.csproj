@@ -1,9 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <!--General properties-->
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>depler.lib</AssemblyName>
+        <RootNamespace>depler.lib</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+
+    <!--Package related properties-->
+    <PropertyGroup>
+        <Title>depler library</Title>
+        <Description>DEPendency crawLER: NuGet dependencies manager</Description>
+        <PackageId>depler.lib</PackageId>
+        <PackageTags>depler nuget lib</PackageTags>
+        <!--<PackageIcon>depler-icon.png</PackageIcon>-->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="2.11.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Spectre.Console" Version="0.44.0" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1" />
+    </ItemGroup>
 
 </Project>

@@ -39,6 +39,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://depler.io</PackageProjectUrl>
         <Description>DEPendency crawLER for managing your NuGet packages</Description>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <!--<PackageIcon>icon.png</PackageIcon>-->
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
