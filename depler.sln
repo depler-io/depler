@@ -2,20 +2,23 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9589F6C-4B2B-41A6-A945-74357500FAE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depler.lib", "src\depler.lib\depler.lib.csproj", "{C25FEDBD-04B1-4BAB-9920-932E1D41C84A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Depler.Lib", "src\Depler.Lib\Depler.Lib.csproj", "{C25FEDBD-04B1-4BAB-9920-932E1D41C84A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{3EC3F994-4F4E-4316-94EB-1CFC2AF6E8E3}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		Dockerfile = Dockerfile
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depler.console", "src\depler.console\depler.console.csproj", "{24741B2C-079F-4163-9C51-9EB7586BFE46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Depler.Console", "src\Depler.Console\Depler.Console.csproj", "{24741B2C-079F-4163-9C51-9EB7586BFE46}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{55F611B8-CBA1-4E0C-9778-206EA7C0AB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depler.tests", "tests\depler.tests\depler.tests.csproj", "{0695E63B-4540-4F0E-B960-55824C2963D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Depler.Tests", "tests\Depler.Tests\Depler.Tests.csproj", "{0695E63B-4540-4F0E-B960-55824C2963D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{EF127152-CBFA-4BBC-9CBD-B7D6B1735955}"
 EndProject

@@ -3,8 +3,8 @@
     <!--General properties-->
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>depler.lib</AssemblyName>
-        <RootNamespace>depler.lib</RootNamespace>
+        <AssemblyName>Depler.Lib</AssemblyName>
+        <RootNamespace>Depler.Lib</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -13,12 +13,13 @@
     <PropertyGroup>
         <Title>depler library</Title>
         <Description>DEPendency crawLER: NuGet dependencies manager</Description>
-        <PackageId>depler.lib</PackageId>
+        <PackageId>Depler.Lib</PackageId>
         <PackageTags>depler nuget lib</PackageTags>
         <!--<PackageIcon>depler-icon.png</PackageIcon>-->
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Nuke.Common" Version="6.0.3" ExcludeAssets="build" />
         <PackageReference Include="Serilog" Version="2.11.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
