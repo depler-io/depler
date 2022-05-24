@@ -15,7 +15,8 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     AzurePipelinesImage.UbuntuLatest,
     AzurePipelinesImage.WindowsLatest,
     AzurePipelinesImage.MacOsLatest,
-    InvokedTargets = new[] { nameof(Restore), nameof(Compile) })]
+    InvokedTargets = new[] { nameof(Compile) },
+    NonEntryTargets = new[] { nameof(Restore) })]
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild
