@@ -2,11 +2,11 @@
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace Depler.Lib.Validation;
+namespace Depler.Validation;
 
-public static class Contract
+public static class Must
 {
-    /// <summary>
+     /// <summary>
     /// Specifies a precondition contract for the enclosing method or property, and throws
     /// an exception if the condition for the contract fails.
     /// </summary>
@@ -14,7 +14,7 @@ public static class Contract
     /// <param name="condition">The conditional expression to test.</param>
     [ContractAnnotation("halt <= condition: false")]
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void Requires<TException>(bool condition)
+    public static void Be<TException>(bool condition)
         where TException : Exception, new()
     {
         if (!condition)
@@ -30,7 +30,7 @@ public static class Contract
     /// <param name="userMessage">The message to display if the condition is false.</param>
     [ContractAnnotation("halt <= condition: false")]
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void Requires<TException>(bool condition, string userMessage)
+    public static void Be<TException>(bool condition, string userMessage)
         where TException : Exception, new()
     {
         if (condition)
@@ -58,10 +58,10 @@ public static class Contract
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void RequiresNotNull<T>(T? value, string? argumentName = null)
+    public static void NotBeNull<T>(T? value, string? argumentName = null)
         where T : class
     {
-        Requires<ArgumentNullException>(
+        Be<ArgumentNullException>(
             value != null, 
             $"{argumentName ?? "Argument"} cannot be null");
     }
@@ -74,9 +74,9 @@ public static class Contract
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void RequiresNotNullOrEmpty(string value, string? argumentName = null)
+    public static void NotBeNullOrEmpty(string value, string? argumentName = null)
     {
-        Requires<ArgumentOutOfRangeException>(
+        Be<ArgumentOutOfRangeException>(
             !string.IsNullOrEmpty(value), 
             $"{argumentName ?? "Argument"} cannot be null or empty string");
     }

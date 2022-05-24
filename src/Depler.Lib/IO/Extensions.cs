@@ -1,4 +1,4 @@
-﻿using Depler.Lib.Validation;
+﻿using Depler.Validation;
 using Nuke.Common.IO;
 
 namespace Depler.Lib.IO;
@@ -7,7 +7,7 @@ public static class Extensions
 {
     public static AbsolutePath ToAbsolutePath(this string path, string? rootPath = null)
     {
-        Contract.RequiresNotNullOrEmpty(path, nameof(path));
+        Must.NotBeNullOrEmpty(path, nameof(path));
 
         if (!string.IsNullOrEmpty(rootPath))
         {
