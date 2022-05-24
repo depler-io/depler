@@ -23,7 +23,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\depler.lib\depler.lib.csproj" />
+        <ProjectReference Include="..\Depler.Lib\Depler.Lib.csproj" />
     </ItemGroup>
     
     <ItemGroup>
