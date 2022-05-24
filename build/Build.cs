@@ -14,7 +14,6 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [AzurePipelines(
     AzurePipelinesImage.UbuntuLatest,
     AzurePipelinesImage.WindowsLatest,
-    AzurePipelinesImage.MacOsLatest,
     InvokedTargets = new[] { nameof(Compile) },
     NonEntryTargets = new[] { nameof(Restore) })]
 [CheckBuildProjectConfigurations]
