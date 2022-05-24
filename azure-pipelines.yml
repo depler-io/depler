@@ -21,8 +21,8 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     jobs:
-      - job: Restore
-        displayName: 'Restore'
+      - job: Compile
+        displayName: 'Compile'
         dependsOn: [  ]
         steps:
           - task: Cache@2
@@ -39,34 +39,15 @@ stages:
               path: $(HOME)/.nuget/packages
           - task: CmdLine@2
             inputs:
-              script: './build.cmd Restore --skip'
-      - job: Compile
-        displayName: 'Compile'
-        dependsOn: [ Restore ]
-        steps:
-          - task: Cache@2
-            displayName: Cache (nuke-temp)
-            inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
-          - task: Cache@2
-            displayName: Cache (nuget-packages)
-            inputs:
-              key: $(Agent.OS) | nuget-packages | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuget-packages
-              path: $(HOME)/.nuget/packages
-          - task: CmdLine@2
-            inputs:
-              script: './build.cmd Compile --skip'
+              script: './build.cmd Restore Compile --skip'
   - stage: windows_latest
     displayName: 'windows-latest'
     dependsOn: [  ]
     pool:
       vmImage: 'windows-latest'
     jobs:
-      - job: Restore
-        displayName: 'Restore'
+      - job: Compile
+        displayName: 'Compile'
         dependsOn: [  ]
         steps:
           - task: Cache@2
@@ -83,34 +64,15 @@ stages:
               path: $(USERPROFILE)/.nuget/packages
           - task: CmdLine@2
             inputs:
-              script: './build.cmd Restore --skip'
-      - job: Compile
-        displayName: 'Compile'
-        dependsOn: [ Restore ]
-        steps:
-          - task: Cache@2
-            displayName: Cache (nuke-temp)
-            inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
-          - task: Cache@2
-            displayName: Cache (nuget-packages)
-            inputs:
-              key: $(Agent.OS) | nuget-packages | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuget-packages
-              path: $(USERPROFILE)/.nuget/packages
-          - task: CmdLine@2
-            inputs:
-              script: './build.cmd Compile --skip'
+              script: './build.cmd Restore Compile --skip'
   - stage: macOS_latest
     displayName: 'macOS-latest'
     dependsOn: [  ]
     pool:
       vmImage: 'macOS-latest'
     jobs:
-      - job: Restore
-        displayName: 'Restore'
+      - job: Compile
+        displayName: 'Compile'
         dependsOn: [  ]
         steps:
           - task: Cache@2
@@ -127,23 +89,4 @@ stages:
               path: $(HOME)/.nuget/packages
           - task: CmdLine@2
             inputs:
-              script: './build.cmd Restore --skip'
-      - job: Compile
-        displayName: 'Compile'
-        dependsOn: [ Restore ]
-        steps:
-          - task: Cache@2
-            displayName: Cache (nuke-temp)
-            inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
-          - task: Cache@2
-            displayName: Cache (nuget-packages)
-            inputs:
-              key: $(Agent.OS) | nuget-packages | **/global.json, **/*.csproj
-              restoreKeys: $(Agent.OS) | nuget-packages
-              path: $(HOME)/.nuget/packages
-          - task: CmdLine@2
-            inputs:
-              script: './build.cmd Compile --skip'
+              script: './build.cmd Restore Compile --skip'
