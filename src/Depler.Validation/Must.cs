@@ -80,4 +80,34 @@ public static class Must
             !string.IsNullOrEmpty(value), 
             $"{argumentName ?? "Argument"} cannot be null or empty string");
     }
+    
+    /// <summary>
+    /// Check if value is an empty collections and throws an <see cref="ArgumentOutOfRangeException"/> if it is true
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is empty</exception>
+    /// <param name="value">Value checked for null</param>
+    /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
+    [ContractAnnotation("halt <= value: null")]
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static void NotBeEmpty<T>(IEnumerable<T> value, string? argumentName = null)
+    {
+        Be<ArgumentOutOfRangeException>(
+            value.Any(), 
+            $"{argumentName ?? "Argument"} cannot be null or empty string");
+    }
+    
+    /// <summary>
+    /// Check if value is null or empty collections and throws an <see cref="ArgumentOutOfRangeException"/> if it is true
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is null or empty</exception>
+    /// <param name="value">Value checked for null</param>
+    /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
+    [ContractAnnotation("halt <= value: null")]
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static void NotBeNullOrEmpty<T>(IEnumerable<T>? value, string? argumentName = null)
+    {
+        Be<ArgumentOutOfRangeException>(
+            value != null && value.Any(), 
+            $"{argumentName ?? "Argument"} cannot be null or empty string");
+    }
 }
