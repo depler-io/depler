@@ -11,8 +11,6 @@ public class Graph : Command<Graph.Settings>
     public Graph(ILogger<Graph> logger)
     {
         _logger = logger;
-        _logger.LogDebug("{Class} initialized", nameof(Graph));
-        _logger.LogInformation("{Class} initialized", nameof(Graph));
     }
     
     public sealed class Settings : LogSettings
@@ -22,8 +20,6 @@ public class Graph : Command<Graph.Settings>
 
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
-        _logger.LogDebug("Executing {CommandName} command", nameof(Graph));
-        _logger.LogInformation("Executing {CommandName} command", nameof(Graph));
         return 0;
     }
 }
