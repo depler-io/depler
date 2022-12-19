@@ -11,6 +11,7 @@ public class PathProvider
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                 .ToAbsolutePath();
         _deplerRoot = path / "depler";
+        FileSystemTasks.EnsureExistingDirectory(_deplerRoot);
     }
 
     public static AbsolutePath DeplerRoot => _deplerRoot;
