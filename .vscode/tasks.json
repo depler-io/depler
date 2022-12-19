@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "nuke",
+            "target": "Compile",
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "label": "nuke: Compile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -2,7 +2,7 @@
 
     <!--General properties-->
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <AssemblyName>Depler.Lib</AssemblyName>
         <RootNamespace>Depler.Lib</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -20,17 +20,17 @@
 
     <ItemGroup>
         <PackageReference Include="Nuke.Common" Version="6.0.3" ExcludeAssets="build" />
-        <PackageReference Include="QuikGraph" Version="2.3.0" />
-        <PackageReference Include="Serilog" Version="2.11.0" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+        <PackageReference Include="QuikGraph" Version="2.5.0" />
+        <PackageReference Include="Serilog" Version="2.12.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-        <PackageReference Include="Spectre.Console" Version="0.44.0" />
+        <PackageReference Include="Spectre.Console" Version="0.45.0" />
         <PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Depler.Abstractions\Depler.Abstractions.csproj" />
-      <ProjectReference Include="..\Depler.Validation\Depler.Validation.csproj" />
+        <ProjectReference Include="..\Depler.Abstractions\Depler.Abstractions.csproj" />
+        <ProjectReference Include="..\Depler.Validation\Depler.Validation.csproj" />
     </ItemGroup>
 
 </Project>

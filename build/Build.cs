@@ -1,7 +1,6 @@
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.CI.AzurePipelines;
-using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -16,7 +15,6 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     AzurePipelinesImage.WindowsLatest,
     InvokedTargets = new[] { nameof(Compile) },
     NonEntryTargets = new[] { nameof(Restore) })]
-[CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild
 {
@@ -26,19 +24,24 @@ class Build : NukeBuild
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
-    public static int Main () => Execute<Build>(x => x.Compile);
+    public static int Main() => Execute<Build>(x => x.Compile);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution] readonly Solution Solution;
+    // ReSharper disable once InconsistentNaming
+    // ReSharper disable once NotAccessedField.Local
     [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
-    AbsolutePath SourceDirectory => RootDirectory / "src";
-    AbsolutePath TestsDirectory => RootDirectory / "tests";
-    AbsolutePath OutputDirectory => RootDirectory / "output";
+    static AbsolutePath SourceDirectory => RootDirectory / "src";
 
+    static AbsolutePath TestsDirectory => RootDirectory / "tests";
+
+    static AbsolutePath OutputDirectory => RootDirectory / "output";
+
+    // ReSharper disable once UnusedMember.Local
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>

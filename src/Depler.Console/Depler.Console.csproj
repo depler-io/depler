@@ -3,43 +3,44 @@
     <!--General properties-->
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <AssemblyName>Depler.Console</AssemblyName>
         <RootNamespace>Depler.Console</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>       
+        <Nullable>disable</Nullable>
     </PropertyGroup>
-    
+
     <!--Package related properties-->
     <PropertyGroup>
         <Title>depler console</Title>
         <Description>DEPendency crawLER: NuGet dependencies manager</Description>
         <PackageId>Depler.Console</PackageId>
         <PackageTags>depler nuget console</PackageTags>
-        <!--<PackageIcon>depler-icon.png</PackageIcon>--> 
-        
+        <!--<PackageIcon>depler-icon.png</PackageIcon>-->
+
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>depler</ToolCommandName>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <ProjectReference Include="..\Depler.Lib\Depler.Lib.csproj" />
     </ItemGroup>
-    
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
         <PackageReference Include="Nuke.Common" Version="6.0.3" ExcludeAssets="build" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
-        <PackageReference Include="Spectre.Console" Version="0.44.0" />
+        <PackageReference Include="Spectre.Console" Version="0.45.0" />
+        <PackageReference Include="Spectre.Console.Cli" Version="0.45.0" />
     </ItemGroup>
-    
+
     <ItemGroup>
-      <None Update="appsettings.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

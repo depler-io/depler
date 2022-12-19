@@ -6,7 +6,7 @@
         <DebugSymbols>True</DebugSymbols>
         <DebugType>portable</DebugType>
     </PropertyGroup>
-    
+
     <!--Version properties-->
     <PropertyGroup>
         <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
@@ -23,13 +23,17 @@
 
         <AssemblyVersion>$(VersionMajor).$(VersionMinor).$(VersionPatch).0</AssemblyVersion>
 
-        <FileVersion Condition="'$(Configuration)'=='Debug'">$(VersionMajor).$(VersionMinor).$(VersionPatch).$(BuildNumber)</FileVersion>
-        <FileVersion Condition="'$(Configuration)'=='Release'">$(VersionMajor).$(VersionMinor).$(VersionPatch)</FileVersion>
+        <FileVersion Condition="'$(Configuration)'=='Debug'">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch).$(BuildNumber)</FileVersion>
+        <FileVersion Condition="'$(Configuration)'=='Release'">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch)</FileVersion>
 
-        <InformationalVersion Condition="'$(Configuration)'=='Debug'">$(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionSuffix)</InformationalVersion>
-        <InformationalVersion Condition="'$(Configuration)'=='Release'">$(VersionMajor).$(VersionMinor).$(VersionPatch)</InformationalVersion>
+        <InformationalVersion Condition="'$(Configuration)'=='Debug'">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionSuffix)</InformationalVersion>
+        <InformationalVersion Condition="'$(Configuration)'=='Release'">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch)</InformationalVersion>
     </PropertyGroup>
-    
+
     <!--Package properties-->
     <PropertyGroup>
         <Product>depler</Product>
@@ -38,16 +42,18 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://depler.io</PackageProjectUrl>
-        <Description>DEPendency crawLER for managing your NuGet packages</Description>
+        <Description>DEPendency crawLER for managing your packages</Description>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <!--<PackageIcon>icon.png</PackageIcon>-->
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        
-        <PackageVersion Condition="'$(VersionPrerelease)' == ''">$(VersionMajor).$(VersionMinor).$(VersionPatch)</PackageVersion>
-        <PackageVersion Condition="'$(VersionPrerelease)' != ''">$(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionPrerelease)</PackageVersion>
+
+        <PackageVersion Condition="'$(VersionPrerelease)' == ''">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch)</PackageVersion>
+        <PackageVersion Condition="'$(VersionPrerelease)' != ''">
+            $(VersionMajor).$(VersionMinor).$(VersionPatch)-$(VersionPrerelease)</PackageVersion>
     </PropertyGroup>
 
     <!--Tests properties-->
