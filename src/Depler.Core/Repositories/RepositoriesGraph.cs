@@ -1,18 +1,17 @@
-﻿using Depler.Lib.Contracts;
+﻿using Depler.Core.Contracts;
+using Depler.Core.Graph;
 using Depler.Validation;
-using QuikGraph;
 // ReSharper disable ForCanBeConvertedToForeach
 
-namespace Depler.Lib.Graph;
+namespace Depler.Core.Repositories;
 
 public class RepositoriesGraph
 {
-    private readonly AdjacencyGraph<Repository, RepositoryDependency> _graph =
-        new AdjacencyGraph<Repository, RepositoryDependency>();
+    private readonly Graph<Repository, RepositoryDependency> _graph = new();
 
     public RepositoriesGraph(IReadOnlyList<Repository> repositoriesList)
     {
-        Must.NotBeEmpty(repositoriesList, nameof(repositoriesList));
+        Must.NotBeEmpty(repositoriesList);
 
         PopulateGraph(repositoriesList);
     }

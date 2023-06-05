@@ -1,6 +1,6 @@
-﻿using Depler.Lib.Contracts;
+﻿using Depler.Core.Contracts;
 
-namespace Depler.Lib.Graph;
+namespace Depler.Core.Repositories;
 
 public class PackageDependency
 {

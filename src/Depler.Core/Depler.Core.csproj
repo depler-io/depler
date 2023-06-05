@@ -3,28 +3,25 @@
     <!--General properties-->
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <AssemblyName>Depler.Lib</AssemblyName>
-        <RootNamespace>Depler.Lib</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <!--Package related properties-->
     <PropertyGroup>
-        <Title>depler library</Title>
+        <Title>Depler Core</Title>
         <Description>DEPendency crawLER: NuGet dependencies manager</Description>
-        <PackageId>Depler.Lib</PackageId>
-        <PackageTags>depler nuget lib</PackageTags>
+        <PackageId>Depler.Core</PackageId>
+        <PackageTags>depler nuget core</PackageTags>
         <!--<PackageIcon>depler-icon.png</PackageIcon>-->
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Nuke.Common" Version="6.0.3" ExcludeAssets="build" />
-        <PackageReference Include="QuikGraph" Version="2.5.0" />
+        <PackageReference Include="Nuke.Common" Version="7.0.2" ExcludeAssets="build" />
         <PackageReference Include="Serilog" Version="2.12.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-        <PackageReference Include="Spectre.Console" Version="0.45.0" />
+        <PackageReference Include="Spectre.Console" Version="0.47.0" />
         <PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1" />
     </ItemGroup>
 

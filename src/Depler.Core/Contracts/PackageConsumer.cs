@@ -1,14 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using Depler.Validation;
 
-namespace Depler.Lib.Contracts;
+namespace Depler.Core.Contracts;
 
 public class PackageConsumer
 {
     public PackageConsumer(string id, IDictionary<string, Package> consumedPackages)
     {
-        Must.NotBeNullOrEmpty(id, nameof(id));
-        Must.NotBeEmpty(consumedPackages, nameof(consumedPackages));
+        Must.NotBeNullOrEmpty(id);
+        Must.NotBeEmpty(consumedPackages);
         
         Id = id;
         ConsumedPackages = new Dictionary<string, Package>(consumedPackages, StringComparer.OrdinalIgnoreCase);

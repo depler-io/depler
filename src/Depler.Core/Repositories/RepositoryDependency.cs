@@ -1,8 +1,8 @@
-﻿using Depler.Lib.Contracts;
+﻿using Depler.Core.Contracts;
+using Depler.Core.Graph;
 using Depler.Validation;
-using QuikGraph;
 
-namespace Depler.Lib.Graph;
+namespace Depler.Core.Repositories;
 
 public class RepositoryDependency : IEdge<Repository>
 {
@@ -12,7 +12,7 @@ public class RepositoryDependency : IEdge<Repository>
             packageDependencies as PackageDependency[] 
             ?? packageDependencies.ToArray();
         
-        Must.NotBeEmpty(dependencies, nameof(packageDependencies));
+        Must.NotBeEmpty(dependencies);
         
         Source = source;
         Target = target;
