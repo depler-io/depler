@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Depler.Abstractions.Contracts;
-using Depler.Lib.Contracts;
-using Depler.Lib.IO;
+using Depler.Core.Contracts;
+using Depler.Core.IO;
 using Nuke.Common.IO;
 
 namespace depler.tests.Mocks;

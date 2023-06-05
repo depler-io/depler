@@ -1,7 +1,6 @@
-﻿using Depler.Console.Commands;
-using Depler.Console.Infrastructure;
-using Depler.Lib.IO;
-using Depler.Lib.Logging;
+﻿using Depler.Console.Infrastructure;
+using Depler.Core.IO;
+using Depler.Core.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,19 +28,11 @@ public class Program
         var serviceCollection = ConfigureServices(config);
         var registrar = new TypeRegistrar(serviceCollection);
 
-        var app = new CommandApp(registrar);
-        app.Configure(appConfig =>
-        {
-            appConfig.Settings.ApplicationName = "depler";
-            appConfig.SetInterceptor(new LogInterceptor());
-            
-            appConfig
-                .AddCommand<Graph>("graph")
-                .WithAlias("g")
-                .WithDescription("Generate and show a graph of dependencies between repositories")
-                .WithExample(new []{"graph"});
-        });
-        return app.RunAsync(args);
+        Banner.PrintLogo();
+        
+        return new CommandApp(registrar)
+            .RegisterCommands()
+            .RunAsync(args);
     }
     
     private static IServiceCollection ConfigureServices(IConfiguration config)

@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using Serilog.Core;
 
-namespace Depler.Lib.Logging;
+namespace Depler.Core.Logging;
 
 public static class Logger
 {

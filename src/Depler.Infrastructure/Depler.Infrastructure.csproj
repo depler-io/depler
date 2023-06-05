@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <!--General properties-->
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <!--Package related properties-->
+    <PropertyGroup>
+        <Title>Depler Infrastructure</Title>
+        <Description>DEPendency crawLER: NuGet dependencies manager</Description>
+        <PackageId>Depler.Infrastructure</PackageId>
+        <PackageTags>depler infrastructure</PackageTags>
+        <!--<PackageIcon>depler-icon.png</PackageIcon>-->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Depler.Validation\Depler.Validation.csproj" />
+    </ItemGroup>
+
+</Project>

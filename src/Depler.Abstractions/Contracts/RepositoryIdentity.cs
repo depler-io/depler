@@ -1,16 +1,28 @@
-﻿using Depler.Validation;
+﻿using Depler.Infrastructure;
+using Depler.Validation;
 
 namespace Depler.Abstractions.Contracts;
 
-public class RepositoryIdentity : IEquatable<RepositoryIdentity>
+public class RepositoryIdentity : IIdentity<RepositoryIdentity>
 {
+    // Do not change that !!!!
+    private static readonly Guid _namespaceId = Guid.Parse("58b89a61-270c-4d75-9026-2debd050da67");
+
+    private Guid? _id;
+    public Guid Id
+    {
+        get
+        {
+            return _id ?? (_id = DeterministicGuidGenerator.Create(_namespaceId, Name + Url)).Value;
+        }
+    }
     public string Name { get; }
     public string Url { get; }
 
     public RepositoryIdentity(string name, string url)
     {
-        Must.NotBeNullOrEmpty(name, nameof(name));
-        Must.NotBeNullOrEmpty(url, nameof(url));
+        Must.NotBeNullOrEmpty(name);
+        Must.NotBeNullOrEmpty(url);
         
         Name = name;
         Url = url;

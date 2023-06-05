@@ -1,13 +1,15 @@
 ﻿using System.Diagnostics;
 using Depler.Abstractions.Contracts;
+using Depler.Core.Graph;
 using Depler.Validation;
 using Nuke.Common.IO;
 
-namespace Depler.Lib.Contracts;
+namespace Depler.Core.Contracts;
 
 [DebuggerDisplay("[{Identity.Name}]")]
-public class Repository : IEquatable<Repository>
+public class Repository: IEquatable<Repository>, IVertex
 {
+    public Guid Id => Identity.Id;
     public RepositoryIdentity Identity { get; }
     public AbsolutePath ClonePath { get; }
     
@@ -17,10 +19,10 @@ public class Repository : IEquatable<Repository>
     public Repository(RepositoryIdentity identity, AbsolutePath clonePath,
         IDictionary<string, PackageConsumer> consumers, IDictionary<string, PackageProducer> producers)
     {
-        Must.NotBeNull(identity, nameof(identity));
-        Must.NotBeNull(clonePath, nameof(clonePath));
-        Must.NotBeNull(consumers, nameof(consumers));
-        Must.NotBeNull(producers, nameof(producers));
+        Must.NotBeNull(identity);
+        Must.NotBeNull(clonePath);
+        Must.NotBeNull(consumers);
+        Must.NotBeNull(producers);
 
         Identity = identity;
         ClonePath = clonePath;
@@ -39,7 +41,7 @@ public class Repository : IEquatable<Repository>
             return false;
 
         return 
-            Identity.Equals(other.Identity)
+            Id.Equals(other.Id)
             && ClonePath.Equals(other.ClonePath);
     }
 }

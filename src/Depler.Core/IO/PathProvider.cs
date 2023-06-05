@@ -1,6 +1,6 @@
 ﻿using Nuke.Common.IO;
 
-namespace Depler.Lib.IO;
+namespace Depler.Core.IO;
 
 public class PathProvider
 {
@@ -11,7 +11,7 @@ public class PathProvider
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                 .ToAbsolutePath();
         _deplerRoot = path / "depler";
-        FileSystemTasks.EnsureExistingDirectory(_deplerRoot);
+        _deplerRoot.CreateDirectory();
     }
 
     public static AbsolutePath DeplerRoot => _deplerRoot;

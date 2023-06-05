@@ -1,4 +1,4 @@
-﻿namespace Depler.Lib.Contracts;
+﻿namespace Depler.Core.Contracts;
 
 public class Package
 {

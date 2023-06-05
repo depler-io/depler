@@ -13,7 +13,7 @@ public static class Must
     /// <typeparam name="TException">The exception to throw if the condition is false.</typeparam>
     /// <param name="condition">The conditional expression to test.</param>
     [ContractAnnotation("halt <= condition: false")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Be<TException>(bool condition)
         where TException : Exception, new()
     {
@@ -29,7 +29,7 @@ public static class Must
     /// <param name="condition">The conditional expression to test.</param>
     /// <param name="userMessage">The message to display if the condition is false.</param>
     [ContractAnnotation("halt <= condition: false")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Be<TException>(bool condition, string userMessage)
         where TException : Exception, new()
     {
@@ -57,8 +57,8 @@ public static class Must
     /// <param name="value">Value checked for null</param>
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void NotBeNull<T>(T? value, string? argumentName = null)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void NotBeNull<T>(T? value, [CallerArgumentExpression(nameof(value))] string? argumentName = null)
         where T : class
     {
         Be<ArgumentNullException>(
@@ -73,8 +73,8 @@ public static class Must
     /// <param name="value">Value checked for null</param>
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void NotBeNullOrEmpty(string value, string? argumentName = null)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void NotBeNullOrEmpty(string value, [CallerArgumentExpression(nameof(value))] string? argumentName = null)
     {
         Be<ArgumentOutOfRangeException>(
             !string.IsNullOrEmpty(value), 
@@ -88,8 +88,8 @@ public static class Must
     /// <param name="value">Value checked for null</param>
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void NotBeEmpty<T>(IEnumerable<T> value, string? argumentName = null)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void NotBeEmpty<T>(IEnumerable<T> value, [CallerArgumentExpression(nameof(value))] string? argumentName = null)
     {
         Be<ArgumentOutOfRangeException>(
             value.Any(), 
@@ -103,11 +103,26 @@ public static class Must
     /// <param name="value">Value checked for null</param>
     /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
     [ContractAnnotation("halt <= value: null")]
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static void NotBeNullOrEmpty<T>(IEnumerable<T>? value, string? argumentName = null)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void NotBeNullOrEmpty<T>(IEnumerable<T>? value, [CallerArgumentExpression(nameof(value))] string? argumentName = null)
     {
         Be<ArgumentOutOfRangeException>(
             value != null && value.Any(), 
             $"{argumentName ?? "Argument"} cannot be null or empty string");
+    }
+    
+    /// <summary>
+    /// Check if a <see cref="Guid"/> value equals <see cref="Guid.Empty"/> and throws an <see cref="ArgumentOutOfRangeException"/> if it is true
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is empty</exception>
+    /// <param name="value">Value checked for Guid.Empty</param>
+    /// <param name="argumentName">Name of the argument to be put in the exception's text'</param>
+    [ContractAnnotation("halt <= value: null")]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void NotBeEmpty(Guid value, [CallerArgumentExpression(nameof(value))] string? argumentName = null)
+    {
+        Be<ArgumentOutOfRangeException>(
+            value != Guid.Empty, 
+            $"{argumentName ?? "Argument"} cannot be an empty Guid");
     }
 }

@@ -1,4 +1,5 @@
-﻿using Depler.Abstractions.Contracts;
+﻿
+using Depler.Abstractions.Contracts;
 using Depler.Abstractions.Repository;
 
 namespace Depler.AzureDevOps;
