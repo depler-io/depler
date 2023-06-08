@@ -1,5 +1,10 @@
 using Depler.Console.Commands;
 using Depler.Console.Infrastructure;
+using Depler.Core.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using Spectre.Console.Cli;
 
 namespace Depler.Console;
@@ -21,6 +26,21 @@ public static class CommandAppExtensions
         });
 
         return app;
+    }
+}
+
+public static class ProgramExtensions
+{
+    public static IServiceCollection ConfigureServices(this IConfiguration config)
+    {
+        return new ServiceCollection()
+            .AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddSerilog(
+                    Logger.Configure(LogInterceptor.LogLevel)
+                );
+            });
     }
 }
 

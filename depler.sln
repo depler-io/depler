@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{3EC3F994-4
 		.gitattributes = .gitattributes
 		Dockerfile = Dockerfile
 		README.md = README.md
+		.github\dependabot.yml = .github\dependabot.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Depler.Console", "src\Depler.Console\Depler.Console.csproj", "{24741B2C-079F-4163-9C51-9EB7586BFE46}"
